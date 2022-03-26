@@ -21,12 +21,6 @@ class OrderCreateForm(FlaskForm):
         render_kw={"placeholder": "provider"},
     )
 
-    orderCode = IntegerField(
-        validators=[
-            InputRequired(),
-        ],
-        render_kw={"placeholder": "order code"},
-    )
 
     saleCode = IntegerField(
         validators=[
