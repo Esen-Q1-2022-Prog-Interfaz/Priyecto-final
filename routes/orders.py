@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from forms.orderCreateForm import OrderCreateForm
 from utils.db import db
 from models.order import Order
-from datetime import date
+from datetime import date, datetime
 
 orders = Blueprint("orders", __name__, url_prefix="/orders")
 
@@ -12,7 +12,7 @@ orders = Blueprint("orders", __name__, url_prefix="/orders")
 @login_required
 def home():
     orderList = Order.query.all()
-    return render_template("orders/home.html", items=orderList, user=current_user)
+    return render_template("orders/home.html", orders=orderList, user=current_user)
 
 
 @orders.route("/create", methods=["GET", "POST"])
@@ -22,8 +22,10 @@ def create():
     if form.validate_on_submit():
         buyer = form.buyer.data
         provider = form.provider.data
-        saleCode = form.saleCode.data
-        newOrder = Order(buyer, provider,)
+        description = form.description.data
+        discount = form.discount.data
+        tax = form.tax.data
+        newOrder = Order(buyer, provider, discount, tax, description, totalsale=0, date=datetime.today())
         db.session.add(newOrder)
         db.session.commit()
         return redirect(url_for("orders.home"))

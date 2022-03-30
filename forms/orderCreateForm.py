@@ -22,11 +22,26 @@ class OrderCreateForm(FlaskForm):
     )
 
 
-    saleCode = IntegerField(
+    description = StringField(
         validators=[
             InputRequired(),
+            Length(min=3, max=20),
         ],
         render_kw={"placeholder": "sale code"},
     )
-
+    discount = IntegerField(
+        validators=[
+            InputRequired(),
+        ],
+        render_kw={"placeholder": "discount"},
+    )
+    
+    tax = IntegerField(
+        validators=[
+            InputRequired(),
+        ],
+        render_kw={"placeholder": "tax"},
+    )
+    
     submit = SubmitField("create")
+

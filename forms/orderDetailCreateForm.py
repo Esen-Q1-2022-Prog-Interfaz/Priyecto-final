@@ -4,12 +4,6 @@ from wtforms.validators import InputRequired, Length
 
 
 class OrderDetailCreateForm(FlaskForm):
-    orderId = IntegerField(
-        validators=[
-            InputRequired(),
-        ],
-        render_kw={"placeholder": "orderId..."},
-    )
 
     quantity = IntegerField(
         validators=[
@@ -32,5 +26,4 @@ class OrderDetailCreateForm(FlaskForm):
         ],
         render_kw={"placeholder": "unit cost..."},
     )
-
     submit = SubmitField("create")
