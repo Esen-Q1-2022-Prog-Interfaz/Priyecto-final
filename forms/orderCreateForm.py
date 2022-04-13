@@ -5,13 +5,6 @@ from models.user import User
 
 
 class OrderCreateForm(FlaskForm):
-    buyer = StringField(
-        validators=[
-            InputRequired(),
-            Length(min=3, max=20),
-        ],
-        render_kw={"placeholder": "buyer"},
-    )
 
     provider = StringField(
         validators=[
@@ -27,21 +20,27 @@ class OrderCreateForm(FlaskForm):
             InputRequired(),
             Length(min=3, max=20),
         ],
-        render_kw={"placeholder": "sale code"},
+        render_kw={"placeholder": "description"},
     )
-    discount = IntegerField(
+    unitcostpurchase = IntegerField(
         validators=[
             InputRequired(),
         ],
-        render_kw={"placeholder": "discount"},
+        render_kw={"placeholder": "unit cost purchase"},
     )
     
-    tax = IntegerField(
+    Quantity = IntegerField(
         validators=[
             InputRequired(),
         ],
-        render_kw={"placeholder": "tax"},
+        render_kw={"placeholder": "Quantity"},
     )
     
+    unitcostsale = IntegerField(
+        validators=[
+            InputRequired(),
+        ],
+        render_kw={"placeholder": "unit cost sale"},
+    )
     submit = SubmitField("create")
 

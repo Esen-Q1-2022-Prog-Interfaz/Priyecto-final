@@ -20,12 +20,12 @@ def home():
 def create():
     form = OrderCreateForm()
     if form.validate_on_submit():
-        buyer = form.buyer.data
         provider = form.provider.data
         description = form.description.data
-        discount = form.discount.data
-        tax = form.tax.data
-        newOrder = Order(buyer, provider, discount, tax, description, totalsale=0, date=datetime.today())
+        unitcostpurchase = form.unitcostpurchase.data
+        Quantity= form.Quantity.data
+        unitcostsale= form.unitcostsale.data
+        newOrder = Order(provider, description, description, unitcostpurchase, Quantity, unitcostsale, date=datetime.today().isoformat())
         db.session.add(newOrder)
         db.session.commit()
         return redirect(url_for("orders.home"))

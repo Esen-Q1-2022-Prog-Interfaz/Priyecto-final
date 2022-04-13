@@ -10,20 +10,20 @@
     
 
 
-<h1>Enter your order</h1>
+<h1>Enter your purchase</h1>
 
 <form action="{{url_for('orders.create')}}", method="post">
     {{ form.hidden_tag() }}
-    {{ form.buyer.label }}
-    {{ form.buyer }}
     {{ form.provider.label }}
     {{ form.provider }}
     {{ form.description.label }}
     {{ form.description }}
-    {{ form.discount.label }}
-    {{ form.discount }}
-    {{ form.tax.label }}
-    {{ form.tax }}
+    {{ form.unitcostpurchase.label }}
+    {{ form.unitcostpurchase }}
+    {{ form.Quantity.label }}
+    {{ form.Quantity }}
+    {{ form.unitcostsale.label }}
+    {{ form.unitcostsale }}
     {{ form.submit }}
     
 </form>
