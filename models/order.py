@@ -2,7 +2,7 @@ from utils.db import db
 
 
 class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    idcompra = db.Column(db.Integer, primary_key=True)
     provider = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(50), nullable=False)
     unitcostpurchase = db.Column(db.Integer, nullable=False)

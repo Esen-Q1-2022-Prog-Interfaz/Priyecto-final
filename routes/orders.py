@@ -31,6 +31,21 @@ def create():
         return redirect(url_for("orders.home"))
     return render_template("orders/create.html", form=form)
 
+@orders.route("/sales", methods=["GET", "POST"])
+@login_required
+def sales():
+    form = OrderCreateForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        client = form.client.data
+        Quantity= form.Quantity.data
+        unitcostsale= form.unitcostsale.data
+        newSale = Sale(description, client, Quantity, unitcostsale, date=datetime.today().isoformat())
+        db.session.add(newSale)
+        db.session.commit()
+        return redirect(url_for("orders.home"))
+    return render_template("orders/create.html", form=form)
+
 
 # http://127.0.0.1:5000/orders/finalize/1
 @orders.route("/finalize/<int:id>")
